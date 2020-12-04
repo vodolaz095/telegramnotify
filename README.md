@@ -9,7 +9,7 @@ Why?
 I think getting [group id](https://stackoverflow.com/questions/32423837/telegram-bot-how-to-get-a-group-chat-id) for 
 telegram bot is not so straightforward. Also sending images, files, documents via bash script can 
 be [complicated too](https://stackoverflow.com/questions/50414388/telegram-bot-cant-send-photo-from-disc-bash-script).
-Thats why i made this application, to make things simplier.
+That's why i have made this application, to make things easier.
 
 
 Install
@@ -17,7 +17,7 @@ Install
 
 Code was tested on Fedora 31 or Centos 8 linux. You can get [precompiled binaries here](https://github.com/vodolaz095/telegramnotify/releases/).
 Put them into `/usr/bin/telegramnotify` or in `~/bin/telegramnotify` or anywhere in $PATH.
-
+If you want to build code from sources, see below.
 
 Setup
 ==============================

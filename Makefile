@@ -58,9 +58,6 @@ build_macos:
 sign: build_prod build_windows build_macos
 	rm build/*.txt -f
 	rm build/*.txt.sig -f
-	rm build/telegramnotify -f
-	rm build/telegramnotify.exe -f
-	rm build/telegramnotify_macos -f
 	find build/ -name $(app)* -exec md5sum {} + > build/md5sum.txt
 	gpg2 -a --output build/md5sum.txt.sig  --detach-sig build/md5sum.txt
 	gpg2 --verify build/md5sum.txt.sig build/md5sum.txt
@@ -79,9 +76,14 @@ sign: build_prod build_windows build_macos
 	@cat build/sha1sum.txt
 	@echo ""
 	@echo ""
-	@echo "*.sig files are signed with my GPG key of \`994C6375\`"
+	@echo "*.sig files are signed with my GPG key"
 
 clean:
+	rm build/*.txt -f
+	rm build/*.txt.sig -f
+	rm build/telegramnotify -f
+	rm build/telegramnotify.exe -f
+	rm build/telegramnotify_macos -f
 	go clean
 
 test: check
