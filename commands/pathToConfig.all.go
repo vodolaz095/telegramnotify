@@ -13,7 +13,7 @@ import (
 func FindConfig() (pathToConfig string) {
 	cp, err := os.UserConfigDir()
 	if err != nil {
-		log.Fatalf("%s : while reading config file from %s", err, pathToConfig)
+		log.Fatalf("%s : while finding config directory for user via os.UserConfigDir", err)
 	}
 	pathToConfig = filepath.Join(cp, "telegramnotify.json")
 	if Verbose {
