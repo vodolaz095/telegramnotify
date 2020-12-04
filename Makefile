@@ -45,8 +45,41 @@ build_without_test:
 	upx build/$(app)
 
 build_windows:
+# architecture can be changed here to make cross compilation work properly
 	GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -ldflags "-X main.Release="release" -X github.com/vodolaz095/telegramnotify/commands.Subversion=$(subver) -X github.com/vodolaz095/telegramnotify/commands.Version=$(ver)" -o "build/$(app).exe" main.go
 	upx build/$(app).exe
+
+build_macos:
+# architecture can be changed here to make cross compilation work properly
+	GOOS=darwin GOARCH=amd64 CGO_ENABLED=0 go build -ldflags "-X main.Release="release" -X github.com/vodolaz095/telegramnotify/commands.Subversion=$(subver) -X github.com/vodolaz095/telegramnotify/commands.Version=$(ver)" -o "build/$(app)_macos" main.go
+	upx build/$(app)_macos
+
+
+sign: build_prod build_windows build_macos
+	rm build/*.txt -f
+	rm build/*.txt.sig -f
+	rm build/telegramnotify -f
+	rm build/telegramnotify.exe -f
+	rm build/telegramnotify_macos -f
+	find build/ -name $(app)* -exec md5sum {} + > build/md5sum.txt
+	gpg2 -a --output build/md5sum.txt.sig  --detach-sig build/md5sum.txt
+	gpg2 --verify build/md5sum.txt.sig build/md5sum.txt
+	find build/ -name $(app)* -exec sha1sum {} + > build/sha1sum.txt
+	gpg2 -a --output build/sha1sum.txt.sig --detach-sig build/sha1sum.txt
+	gpg2 --verify build/sha1sum.txt.sig build/sha1sum.txt
+	@echo ""
+	@echo ""
+	@echo "MD5 hashes"
+	@echo "========================"
+	@cat build/md5sum.txt
+	@echo ""
+	@echo ""
+	@echo "SHA1 hashes"
+	@echo "========================"
+	@cat build/sha1sum.txt
+	@echo ""
+	@echo ""
+	@echo "*.sig files are signed with my GPG key of \`994C6375\`"
 
 clean:
 	go clean
