@@ -44,6 +44,10 @@ build_without_test:
 # make binary smaller
 	upx build/$(app)
 
+build_windows:
+	GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -ldflags "-X main.Release="release" -X github.com/vodolaz095/telegramnotify/commands.Subversion=$(subver) -X github.com/vodolaz095/telegramnotify/commands.Version=$(ver)" -o "build/$(app).exe" main.go
+	upx build/$(app).exe
+
 clean:
 	go clean
 
