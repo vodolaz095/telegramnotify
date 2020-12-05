@@ -1,0 +1,11 @@
+[Unit]
+Description=Send webcam image to telegram channel
+After=network-online.target
+
+[Service]
+# this user usually has access to video
+User=video
+Group=video
+
+Type=oneshot
+ExecStart=/usr/bin/telegram-fswebcam.sh

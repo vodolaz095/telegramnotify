@@ -10,7 +10,7 @@ I think getting [group id](https://stackoverflow.com/questions/32423837/telegram
 telegram bot is not so straightforward. Also sending images, files, documents via bash script can 
 be [complicated too](https://stackoverflow.com/questions/50414388/telegram-bot-cant-send-photo-from-disc-bash-script).
 That's why i have made this application, to make things easier.
-
+See `contrib/` directory for various usage example of this application.
 
 Install
 ==============================

@@ -1,0 +1,9 @@
+[Unit]
+Description=Notify on service status using telegram
+After=network.target
+
+# Inspiration - https://www.curry-software.com/en/blog/telegram_unit_fail/
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/unit-status-telegram.sh %I

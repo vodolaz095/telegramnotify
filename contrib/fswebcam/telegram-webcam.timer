@@ -1,0 +1,12 @@
+[Unit]
+Description=Send webcamera image to telegram channel every minute
+Wants=network-online.target
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=1m
+OnUnitInactiveSec=1h
+Unit=telegram-webcam.service
+
+[Install]
+WantedBy=timers.target
