@@ -63,7 +63,7 @@ build_rpm: build_prod
 	rpmdev-wipetree
 	rpmdev-setuptree
 	cp build/$(app) $${HOME}/rpmbuild/BUILD/$(app)
-	cp contrib/telegramnotify.json $${HOME}/rpmbuild/BUILD/$(app)
+	cp contrib/telegramnotify.json $${HOME}/rpmbuild/BUILD/telegramnotify.json
 	rpmbuild --clean -bb --define 'release ${gittip}' --define 'version $(majorVersion).$(minorVersion).$(patchVersion)' $(app).spec
 	cp $${HOME}/rpmbuild/RPMS/$(shell uname -m)/$(app)-$(majorVersion).$(minorVersion).$(patchVersion)-$(gittip).$(shell uname -m).rpm build/
 
