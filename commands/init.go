@@ -29,7 +29,7 @@ var rootCmd = &cobra.Command{
 	Short:   "Console application to send notifications into telegram channels via bot-api",
 	Long:    "Console application to send notifications into telegram channels via bot-api",
 	PreRun:  preloadConfig,
-	Version: fmt.Sprintf("%s:%s. Homepage: https://github.com/vodolaz095/telegramnotify", Version, Subversion),
+	Version: fmt.Sprintf("%s. Build: %s. Homepage: https://github.com/vodolaz095/telegramnotify", Version, Subversion),
 	Run: func(cmd *cobra.Command, args []string) {
 		cmd.Help()
 	},
