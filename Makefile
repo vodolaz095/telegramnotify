@@ -39,13 +39,13 @@ build_dev: clean deps check
 
 build_prod: clean deps check
 #http://www.atatus.com/blog/golang-auto-build-versioning/
-	go build -ldflags "-X github.com/vodolaz095/telegramnotify/commands.Subversion=$(subver) -X github.com/vodolaz095/telegramnotify/commands.Version=$(ver)" -o "build/$(app)" main.go
+	GOOS=linux GOARCH=amd64 go build -ldflags "-X github.com/vodolaz095/telegramnotify/commands.Subversion=$(subver) -X github.com/vodolaz095/telegramnotify/commands.Version=$(ver)" -o "build/$(app)" main.go
 	upx build/$(app)
 	./build/telegramnotify --version
 
 build_without_test:
 #http://www.atatus.com/blog/golang-auto-build-versioning/
-	go build -ldflags "-X github.com/vodolaz095/telegramnotify/commands.Subversion=$(subver) -X github.com/vodolaz095/telegramnotify/commands.Version=$(ver)" -o "build/$(app)" main.go
+	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags "-X github.com/vodolaz095/telegramnotify/commands.Subversion=$(subver) -X github.com/vodolaz095/telegramnotify/commands.Version=$(ver)" -o "build/$(app)" main.go
 	upx build/$(app)
 
 build_windows: clean deps check
@@ -58,6 +58,9 @@ build_macos: clean deps check
 	GOOS=darwin GOARCH=amd64 CGO_ENABLED=0 go build -ldflags "-X github.com/vodolaz095/telegramnotify/commands.Subversion=$(subver) -X github.com/vodolaz095/telegramnotify/commands.Version=$(ver)" -o "build/$(app)_macos" main.go
 	upx build/$(app)_macos
 
+build_arm: clean deps check
+	GOOS=linux GOARCH=arm GOARM=6 CGO_ENABLED=0 go build -ldflags "-X github.com/vodolaz095/telegramnotify/commands.Subversion=$(subver) -X github.com/vodolaz095/telegramnotify/commands.Version=$(ver)" -o "build/$(app)_arm" main.go
+	upx build/$(app)_arm
 
 build_rpm: build_prod
 	rpmdev-wipetree
