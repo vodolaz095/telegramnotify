@@ -10,12 +10,17 @@ I think getting [group id](https://stackoverflow.com/questions/32423837/telegram
 telegram bot is not so straightforward. Also sending images, files, documents via bash script can 
 be [complicated too](https://stackoverflow.com/questions/50414388/telegram-bot-cant-send-photo-from-disc-bash-script).
 That's why i have made this application, to make things easier.
-See `contrib/` directory for various usage example of this application.
+See `contrib/` directory for various usage examples of this application.
+
+Advertisement
+=======================
+You can hire the author of this package by Upwork - [https://www.upwork.com/freelancers/~0120ba573d09c66c51](https://www.upwork.com/freelancers/~0120ba573d09c66c51/)
+
 
 Install
 ==============================
 
-Code was tested on Fedora 31 or Centos 8 linux. You can get [precompiled binaries here](https://github.com/vodolaz095/telegramnotify/releases/).
+Code was tested on Fedora 35 or Centos 8 linux. You can get [precompiled binaries here](https://github.com/vodolaz095/telegramnotify/releases/).
 Put them into `/usr/bin/telegramnotify` or in `~/bin/telegramnotify` or anywhere in $PATH.
 If you want to build code from sources, see below.
 
